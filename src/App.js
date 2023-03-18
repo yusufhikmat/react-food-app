@@ -5,6 +5,8 @@ import Cart from './components/carts/Cart';
 import Header from './components/header/Header';
 import MealsList from './components/meals/MealsList';
 import MealsSummary from './components/meals/MealsSummary';
+import CartContext from './store/CartContext';
+import CartProvider from './store/CartProvider';
 
 function App() {
   const [showCart, setDisplayCart] = useState(false)
@@ -42,13 +44,13 @@ function App() {
     setDisplayCart(false)
   }
   return (
-    <div>
+    <CartProvider>
       {showCart && <Cart hideCart={hideCart}/>}
       
       <Header displayCart={displayCart}/>
       <MealsSummary />
       <MealsList data={DUMMY_MEALS}/>
-    </div>
+    </CartProvider>
   );
 }
 
